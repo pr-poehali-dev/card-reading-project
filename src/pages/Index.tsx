@@ -16,14 +16,31 @@ const Index = () => {
       }}
       onClick={handleCardRevealed ? () => {} : undefined}
     >
-      {/* Интерактивная область карты */}
-      <div className="absolute" style={{
-        top: '30%',
-        left: '42%',
-        width: '16%',
-        height: '25%'
-      }}>
-        <TarotCard onCardRevealed={handleCardRevealed} />
+      {/* Интерактивная область карты в руке */}
+      <div 
+        className="absolute cursor-pointer opacity-0 hover:opacity-20 transition-opacity duration-300" 
+        style={{
+          top: '28%',
+          left: '40%',
+          width: '12%',
+          height: '20%',
+          backgroundColor: 'rgba(255, 215, 0, 0.1)'
+        }}
+        onClick={() => {
+          const cards = [
+            { name: "Дурак", meaning: "Новые начинания", description: "Время для новых приключений и принятия смелых решений. Доверьтесь интуиции.", element: "Воздух" },
+            { name: "Маг", meaning: "Сила воли", description: "У вас есть все необходимые инструменты для достижения целей. Действуйте!", element: "Огонь" },
+            { name: "Верховная Жрица", meaning: "Интуиция", description: "Прислушайтесь к внутреннему голосу. Ответы приходят через медитацию.", element: "Вода" },
+            { name: "Императрица", meaning: "Плодородие", description: "Время творчества и изобилия. Ваши проекты принесут богатые плоды.", element: "Земля" },
+            { name: "Император", meaning: "Власть", description: "Возьмите контроль в свои руки. Лидерство и структура принесут успех.", element: "Огонь" },
+            { name: "Звезда", meaning: "Надежда", description: "После бури приходит покой. Ваши мечты осуществимы.", element: "Воздух" },
+            { name: "Солнце", meaning: "Радость", description: "Период счастья и успеха. Делитесь своим светом с окружающими.", element: "Огонь" }
+          ];
+          const randomCard = cards[Math.floor(Math.random() * cards.length)];
+          handleCardRevealed(randomCard);
+        }}
+      >
+        {/* Невидимая интерактивная зона */}
       </div>
 
       {/* Область предсказания */}
