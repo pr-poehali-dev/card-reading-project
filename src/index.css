@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&display=swap");
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -97,5 +99,26 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family: "Cormorant Garamond", serif;
+  }
+
+  .mystic-title {
+    font-family: "Cinzel", serif;
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .transform-style-preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+
+  .rotate-y-180 {
+    transform: rotateY(180deg);
   }
 }
