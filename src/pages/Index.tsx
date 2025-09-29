@@ -61,22 +61,25 @@ const Index = () => {
     >
       <div className="absolute bottom-8 left-8 flex items-center gap-8 z-20">
         <div
-          className="w-[120px] h-[180px] cursor-pointer transition-all duration-500 perspective-1000"
+          className="w-[120px] h-[180px] cursor-pointer transition-all duration-500 perspective-1000 relative"
           onClick={handleCardClick}
-          style={{
-            transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
-            transformStyle: 'preserve-3d'
-          }}
         >
           <img 
-            src={isFlipped && selectedCard ? selectedCard.image : '/img/59e66927-45a7-46c0-91f6-39f79c23015e.jpg'}
+            src='/img/59e66927-45a7-46c0-91f6-39f79c23015e.jpg'
             alt="Карта"
-            className="w-full h-full object-cover rounded-lg shadow-[0_4px_20px_rgba(255,215,0,0.4)] animate-pulse"
+            className="w-full h-full object-cover rounded-lg shadow-[0_4px_20px_rgba(255,215,0,0.4)] animate-pulse absolute inset-0"
             style={{
-              transform: isFlipped ? 'scaleX(-1)' : 'scaleX(1)',
-              backfaceVisibility: 'hidden'
+              opacity: isFlipped ? 0 : 1,
+              transition: 'opacity 0.3s'
             }}
           />
+          {isFlipped && selectedCard && (
+            <img 
+              src={selectedCard.image}
+              alt={selectedCard.name}
+              className="w-full h-full object-cover rounded-lg shadow-[0_4px_20px_rgba(255,215,0,0.4)] absolute inset-0"
+            />
+          )}
         </div>
 
         {isFlipped && selectedCard && (
