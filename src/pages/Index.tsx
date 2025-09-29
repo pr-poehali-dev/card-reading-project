@@ -10,7 +10,6 @@ const Index = () => {
   const [isFlipped, setIsFlipped] = useState(false);
   const [selectedCard, setSelectedCard] = useState<Card | null>(null);
   const [selectedType, setSelectedType] = useState<string>('day');
-  const [showIntro, setShowIntro] = useState(true);
 
   const cards: Card[] = [
     { name: "Туз Пик", image: "/img/b34f6665-c1ce-431f-9873-1a600dd3a3b6.jpg", meaning: "Туз Пик — перемены, неожиданные известия." },
@@ -81,28 +80,6 @@ const Index = () => {
     setSelectedCard(cardWithMeaning);
     setIsFlipped(true);
   };
-
-  if (showIntro) {
-    return (
-      <div className="fixed inset-0 w-full h-full bg-black flex items-center justify-center">
-        <video 
-          className="w-full h-full object-cover"
-          autoPlay
-          onEnded={() => setShowIntro(false)}
-          playsInline
-        >
-          <source src="https://284baef4-3d14-4ca5-8247-4811f0d6b14b.selstorage.ru/4110ee75-e224-4431-82ab-9f66aa8b38e2_01999644-0d8f-753e-9da5-46eb37462539.mp4" type="video/mp4" />
-          Ваш браузер не поддерживает видео.
-        </video>
-        <button
-          onClick={() => setShowIntro(false)}
-          className="absolute bottom-8 right-8 px-6 py-3 bg-[#C9A876] text-black rounded-lg font-medium hover:bg-[#B89866] transition-colors"
-        >
-          Пропустить
-        </button>
-      </div>
-    );
-  }
 
   return (
     <div className="fixed inset-0 w-full h-full bg-black flex items-center justify-center" 
