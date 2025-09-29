@@ -186,6 +186,12 @@ const Index = () => {
           </div>
         )}
       </div>
+
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
+        <h1 className="text-[#C9A876] text-2xl font-serif tracking-wider">
+          Гадание Пиковая дама
+        </h1>
+      </div>
     </div>
   )
 };
