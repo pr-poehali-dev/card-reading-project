@@ -46,6 +46,25 @@ const Index = () => {
     { name: "7 Треф", image: "/img/41dfb234-bbc8-448c-a155-59da2396f211.jpg", meaning: "7 Треф — небольшой успех, маленькая победа." }
   ];
 
+  const getMeaningForType = (card: Card, type: string): string => {
+    const meanings: Record<string, Record<string, string>> = {
+      day: {
+        default: `${card.meaning} Этот день принесёт вам то, что предначертано судьбой.`
+      },
+      love: {
+        default: `В любви ${card.name} означает: ваши чувства истинны, следуйте зову сердца.`
+      },
+      wish: {
+        default: `${card.name} говорит о вашем желании: оно исполнится, если вы верите в него.`
+      },
+      week: {
+        default: `${card.meaning} Эта неделя будет важной для ваших планов.`
+      }
+    };
+    
+    return meanings[type]?.default || card.meaning;
+  };
+
   const handleCardClick = () => {
     if (isFlipped) {
       setIsFlipped(false);
@@ -54,7 +73,11 @@ const Index = () => {
     }
     
     const randomCard = cards[Math.floor(Math.random() * cards.length)];
-    setSelectedCard(randomCard);
+    const cardWithMeaning = {
+      ...randomCard,
+      meaning: getMeaningForType(randomCard, selectedType)
+    };
+    setSelectedCard(cardWithMeaning);
     setIsFlipped(true);
   };
 
@@ -69,7 +92,13 @@ const Index = () => {
     >
       <div className="absolute bottom-8 right-8 flex flex-col gap-4 z-20">
         <button
-          onClick={() => setSelectedType('day')}
+          onClick={() => {
+            setSelectedType('day');
+            if (isFlipped) {
+              setIsFlipped(false);
+              setSelectedCard(null);
+            }
+          }}
           className={`px-6 py-3 rounded-lg font-medium transition-all ${
             selectedType === 'day'
               ? 'bg-[#C9A876] text-black shadow-lg shadow-[#C9A876]/50'
@@ -79,7 +108,13 @@ const Index = () => {
           Карта дня
         </button>
         <button
-          onClick={() => setSelectedType('love')}
+          onClick={() => {
+            setSelectedType('love');
+            if (isFlipped) {
+              setIsFlipped(false);
+              setSelectedCard(null);
+            }
+          }}
           className={`px-6 py-3 rounded-lg font-medium transition-all ${
             selectedType === 'love'
               ? 'bg-[#C9A876] text-black shadow-lg shadow-[#C9A876]/50'
@@ -89,7 +124,13 @@ const Index = () => {
           Карта любви
         </button>
         <button
-          onClick={() => setSelectedType('wish')}
+          onClick={() => {
+            setSelectedType('wish');
+            if (isFlipped) {
+              setIsFlipped(false);
+              setSelectedCard(null);
+            }
+          }}
           className={`px-6 py-3 rounded-lg font-medium transition-all ${
             selectedType === 'wish'
               ? 'bg-[#C9A876] text-black shadow-lg shadow-[#C9A876]/50'
@@ -99,7 +140,13 @@ const Index = () => {
           Карта желаний
         </button>
         <button
-          onClick={() => setSelectedType('week')}
+          onClick={() => {
+            setSelectedType('week');
+            if (isFlipped) {
+              setIsFlipped(false);
+              setSelectedCard(null);
+            }
+          }}
           className={`px-6 py-3 rounded-lg font-medium transition-all ${
             selectedType === 'week'
               ? 'bg-[#C9A876] text-black shadow-lg shadow-[#C9A876]/50'
