@@ -23,19 +23,19 @@ const Index = () => {
 
   return (
     <div 
-      className="fixed inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
+      className="fixed inset-0 w-full h-full bg-contain bg-center bg-no-repeat"
       style={{
-        backgroundImage: 'url(https://cdn.poehali.dev/files/73158110-0514-4245-badb-856e82fc1812.png)'
+        backgroundImage: 'url(https://cdn.poehali.dev/files/79fbba26-6e10-4fd4-9822-3de36103c929.png)'
       }}
     >
       {/* Интерактивная область карты в руке */}
       <div 
         className="absolute cursor-pointer bg-transparent hover:bg-yellow-400/20 transition-colors duration-300 z-10" 
         style={{
-          top: '28%',
-          left: '38%',
-          width: '14%',
-          height: '22%'
+          top: '25%',
+          left: '15%',
+          width: '12%',
+          height: '18%'
         }}
         onClick={handleCardClick}
         title="Нажмите на карту для гадания"
