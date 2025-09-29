@@ -59,7 +59,7 @@ const Index = () => {
         backgroundRepeat: 'no-repeat'
       }}
     >
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-8 z-20">
+      <div className="absolute bottom-8 left-8 flex items-center gap-8 z-20">
         <div
           className="w-[120px] h-[180px] cursor-pointer transition-all duration-500 perspective-1000"
           onClick={handleCardClick}
