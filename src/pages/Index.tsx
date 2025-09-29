@@ -55,27 +55,6 @@ const Index = () => {
     const randomCard = cards[Math.floor(Math.random() * cards.length)];
     setSelectedCard(randomCard);
     setIsFlipped(true);
-    
-    if ('speechSynthesis' in window) {
-      setTimeout(() => {
-        const utterance = new SpeechSynthesisUtterance(randomCard.meaning);
-        utterance.lang = 'ru-RU';
-        utterance.rate = 0.85;
-        utterance.pitch = 1.2;
-        
-        const voices = window.speechSynthesis.getVoices();
-        const femaleVoice = voices.find(voice => 
-          voice.lang.includes('ru') && 
-          (voice.name.includes('Female') || voice.name.includes('женск') || voice.name.includes('Milena') || voice.name.includes('Tatyana'))
-        );
-        
-        if (femaleVoice) {
-          utterance.voice = femaleVoice;
-        }
-        
-        window.speechSynthesis.speak(utterance);
-      }, 600);
-    }
   };
 
   return (
