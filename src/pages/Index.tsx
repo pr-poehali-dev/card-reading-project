@@ -84,22 +84,30 @@ const Index = () => {
 
   if (showIntro) {
     return (
-      <div className="fixed inset-0 w-full h-full bg-black flex items-center justify-center">
-        <video 
-          className="w-full h-full object-cover"
-          autoPlay
-          onEnded={() => setShowIntro(false)}
-          playsInline
-          poster="https://284baef4-3d14-4ca5-8247-4811f0d6b14b.selstorage.ru/cf46f75d-6cb1-47a9-8a05-c3647c046ae4_ec9c6fcf-7d13-48a1-9b8d-22d447ed67c7.png"
-        >
-          <source src="https://284baef4-3d14-4ca5-8247-4811f0d6b14b.selstorage.ru/4110ee75-e224-4431-82ab-9f66aa8b38e2_01999644-0d8f-753e-9da5-46eb37462539.mp4" type="video/mp4" />
-          Ваш браузер не поддерживает элемент video.
-        </video>
+      <div className="fixed inset-0 w-full h-full bg-black flex items-center justify-center overflow-auto">
+        <div className="max-w-[1200px] mx-auto p-5 text-center">
+          <img 
+            src="https://284baef4-3d14-4ca5-8247-4811f0d6b14b.selstorage.ru/cf46f75d-6cb1-47a9-8a05-c3647c046ae4_ec9c6fcf-7d13-48a1-9b8d-22d447ed67c7.png"
+            alt="Пиковая дама, перевёрнутые карты с тёмной рубашкой"
+            className="w-full h-auto rounded-lg shadow-[0_4px_12px_rgba(0,0,0,0.3)]"
+          />
+          <video 
+            className="w-full h-auto rounded-lg shadow-[0_4px_12px_rgba(0,0,0,0.3)] mt-5"
+            controls
+            autoPlay
+            muted
+            loop
+            playsInline
+          >
+            <source src="https://284baef4-3d14-4ca5-8247-4811f0d6b14b.selstorage.ru/24611ee1-5089-44cd-b1d9-ea50e7618a2a_01999649-3958-75b6-83b2-8991c0b10513.mp4" type="video/mp4" />
+            Ваш браузер не поддерживает элемент video.
+          </video>
+        </div>
         <button
           onClick={() => setShowIntro(false)}
           className="absolute bottom-8 right-8 px-6 py-3 bg-[#C9A876] text-black rounded-lg font-medium hover:bg-[#B89866] transition-colors z-50"
         >
-          Пропустить
+          Перейти к гаданию
         </button>
       </div>
     );
