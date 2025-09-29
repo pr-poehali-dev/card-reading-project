@@ -72,8 +72,8 @@ const Index = () => {
           onClick={() => setSelectedType('day')}
           className={`px-6 py-3 rounded-lg font-medium transition-all ${
             selectedType === 'day'
-              ? 'bg-[#F5E6D3] text-black shadow-lg shadow-[#F5E6D3]/50'
-              : 'bg-[rgba(24,24,30,0.9)] text-[#F5E6D3] border-2 border-[#F5E6D3]/30 hover:bg-[#F5E6D3]/20'
+              ? 'bg-[#C9A876] text-black shadow-lg shadow-[#C9A876]/50'
+              : 'bg-[rgba(24,24,30,0.9)] text-[#C9A876] border-2 border-[#C9A876]/30 hover:bg-[#C9A876]/20'
           }`}
         >
           Карта дня
@@ -82,8 +82,8 @@ const Index = () => {
           onClick={() => setSelectedType('love')}
           className={`px-6 py-3 rounded-lg font-medium transition-all ${
             selectedType === 'love'
-              ? 'bg-[#F5E6D3] text-black shadow-lg shadow-[#F5E6D3]/50'
-              : 'bg-[rgba(24,24,30,0.9)] text-[#F5E6D3] border-2 border-[#F5E6D3]/30 hover:bg-[#F5E6D3]/20'
+              ? 'bg-[#C9A876] text-black shadow-lg shadow-[#C9A876]/50'
+              : 'bg-[rgba(24,24,30,0.9)] text-[#C9A876] border-2 border-[#C9A876]/30 hover:bg-[#C9A876]/20'
           }`}
         >
           Карта любви
@@ -92,8 +92,8 @@ const Index = () => {
           onClick={() => setSelectedType('wish')}
           className={`px-6 py-3 rounded-lg font-medium transition-all ${
             selectedType === 'wish'
-              ? 'bg-[#F5E6D3] text-black shadow-lg shadow-[#F5E6D3]/50'
-              : 'bg-[rgba(24,24,30,0.9)] text-[#F5E6D3] border-2 border-[#F5E6D3]/30 hover:bg-[#F5E6D3]/20'
+              ? 'bg-[#C9A876] text-black shadow-lg shadow-[#C9A876]/50'
+              : 'bg-[rgba(24,24,30,0.9)] text-[#C9A876] border-2 border-[#C9A876]/30 hover:bg-[#C9A876]/20'
           }`}
         >
           Карта желаний
@@ -102,8 +102,8 @@ const Index = () => {
           onClick={() => setSelectedType('week')}
           className={`px-6 py-3 rounded-lg font-medium transition-all ${
             selectedType === 'week'
-              ? 'bg-[#F5E6D3] text-black shadow-lg shadow-[#F5E6D3]/50'
-              : 'bg-[rgba(24,24,30,0.9)] text-[#F5E6D3] border-2 border-[#F5E6D3]/30 hover:bg-[#F5E6D3]/20'
+              ? 'bg-[#C9A876] text-black shadow-lg shadow-[#C9A876]/50'
+              : 'bg-[rgba(24,24,30,0.9)] text-[#C9A876] border-2 border-[#C9A876]/30 hover:bg-[#C9A876]/20'
           }`}
         >
           Карта недели
