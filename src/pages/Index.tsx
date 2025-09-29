@@ -1,68 +1,92 @@
 import { useState } from 'react'
 
-const Index = () => {
-  const [currentReading, setCurrentReading] = useState<any>(null);
+interface Card {
+  name: string;
+  image: string;
+  meaning: string;
+}
 
-  const cards = [
-    { name: "Дурак", meaning: "Новые начинания", description: "Время для новых приключений и принятия смелых решений. Доверьтесь интуиции.", element: "Воздух" },
-    { name: "Маг", meaning: "Сила воли", description: "У вас есть все необходимые инструменты для достижения целей. Действуйте!", element: "Огонь" },
-    { name: "Верховная Жрица", meaning: "Интуиция", description: "Прислушайтесь к внутреннему голосу. Ответы приходят через медитацию.", element: "Вода" },
-    { name: "Императрица", meaning: "Плодородие", description: "Время творчества и изобилия. Ваши проекты принесут богатые плоды.", element: "Земля" },
-    { name: "Император", meaning: "Власть", description: "Возьмите контроль в свои руки. Лидерство и структура принесут успех.", element: "Огонь" },
-    { name: "Звезда", meaning: "Надежда", description: "После бури приходит покой. Ваши мечты осуществимы.", element: "Воздух" },
-    { name: "Солнце", meaning: "Радость", description: "Период счастья и успеха. Делитесь своим светом с окружающими.", element: "Огонь" },
-    { name: "Луна", meaning: "Иллюзии", description: "Не все является тем, чем кажется. Доверяйте интуиции больше глазам.", element: "Вода" },
-    { name: "Смерть", meaning: "Трансформация", description: "Конец одного этапа означает начало нового. Примите изменения.", element: "Вода" },
-    { name: "Мир", meaning: "Завершение", description: "Цикл завершен. Вы достигли гармонии и можете праздновать успех.", element: "Земля" }
+const Index = () => {
+  const [isFlipped, setIsFlipped] = useState(false);
+  const [selectedCard, setSelectedCard] = useState<Card | null>(null);
+  const [showMeaning, setShowMeaning] = useState(false);
+
+  const cards: Card[] = [
+    {
+      name: "Туз Пик",
+      image: "/img/b34f6665-c1ce-431f-9873-1a600dd3a3b6.jpg",
+      meaning: "Туз Пик — перемены, неожиданные известия."
+    },
+    {
+      name: "Король Пик",
+      image: "/img/32d71413-9856-40e0-bf1b-73186a855ff2.jpg",
+      meaning: "Король Пик — могущественный человек, покровитель."
+    },
+    {
+      name: "Пиковая дама",
+      image: "/img/34dd9ab1-fc94-44dd-b9f6-6324370b7787.jpg",
+      meaning: "Пиковая дама — сильная женщина, загадка, испытание судьбы."
+    }
   ];
 
   const handleCardClick = () => {
+    if (isFlipped) return;
+    
     const randomCard = cards[Math.floor(Math.random() * cards.length)];
-    setCurrentReading(randomCard);
+    setSelectedCard(randomCard);
+    setIsFlipped(true);
+    
+    setTimeout(() => {
+      setShowMeaning(true);
+      speakMeaning(randomCard.meaning);
+    }, 600);
+  };
+
+  const speakMeaning = (text: string) => {
+    if ('speechSynthesis' in window) {
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'ru-RU';
+      utterance.rate = 0.9;
+      utterance.pitch = 0.8;
+      window.speechSynthesis.speak(utterance);
+    }
   };
 
   return (
-    <div 
-      className="fixed inset-0 w-full h-full bg-black bg-contain bg-center bg-no-repeat"
-      style={{
-        backgroundImage: 'url(https://cdn.poehali.dev/files/79fbba26-6e10-4fd4-9822-3de36103c929.png)'
-      }}
-    >
-      {/* Интерактивная область карты в руке */}
-      <div 
-        className="absolute cursor-pointer bg-transparent hover:bg-yellow-400/20 transition-colors duration-300 z-10" 
-        style={{
-          top: '25%',
-          left: '15%',
-          width: '12%',
-          height: '18%'
-        }}
-        onClick={handleCardClick}
-        title="Нажмите на карту для гадания"
-      />
-
-      {/* Область предсказания */}
-      {currentReading && (
-        <div className="absolute bottom-4 left-4 right-4 bg-black/90 backdrop-blur-sm rounded-lg p-4 text-white animate-fade-in z-20">
-          <div className="text-center">
-            <h3 className="text-xl text-yellow-400 mb-2 font-bold">
-              {currentReading.name}
-            </h3>
-            <p className="text-yellow-300 font-medium mb-2">
-              {currentReading.meaning}
-            </p>
-            <p className="text-sm leading-relaxed mb-3">
-              {currentReading.description}
-            </p>
-            <button 
-              onClick={() => setCurrentReading(null)}
-              className="px-4 py-2 bg-yellow-600 text-black rounded hover:bg-yellow-500 transition-colors"
-            >
-              Закрыть
-            </button>
-          </div>
+    <div className="fixed inset-0 w-full h-full bg-[#121726] flex items-center justify-center">
+      <div className="relative w-[450px] h-[600px] rounded-3xl overflow-hidden bg-[#151525] shadow-[0_6px_32px_rgba(0,0,0,0.7)]">
+        <img 
+          src="https://cdn.poehali.dev/files/79fbba26-6e10-4fd4-9822-3de36103c929.png" 
+          alt="Пиковая дама" 
+          className="w-full h-full object-cover brightness-90"
+        />
+        
+        <div
+          className="absolute left-[45%] top-[62%] w-[100px] h-[150px] -translate-x-1/2 -translate-y-1/2 cursor-pointer transition-all duration-500 shadow-[0_4px_16px_rgba(0,0,0,0.6)] z-10"
+          style={{
+            transform: isFlipped 
+              ? 'translate(-50%, -50%) rotateY(180deg) scale(1.08)'
+              : 'translate(-50%, -50%) rotateY(0deg) scale(1)',
+            backfaceVisibility: 'hidden'
+          }}
+          onClick={handleCardClick}
+        >
+          <img 
+            src={isFlipped && selectedCard ? selectedCard.image : '/img/59e66927-45a7-46c0-91f6-39f79c23015e.jpg'}
+            alt="Карта"
+            className="w-full h-full object-cover rounded-lg"
+            style={{
+              transform: isFlipped ? 'scaleX(-1)' : 'scaleX(1)'
+            }}
+          />
         </div>
-      )}
+
+        {showMeaning && selectedCard && (
+          <div className="absolute w-full bottom-[22px] left-0 bg-[rgba(24,24,30,0.88)] px-4 py-7 pb-[18px] text-white text-center text-[1.38rem] tracking-wide border-t-2 border-white/10 rounded-b-[22px] z-20">
+            {selectedCard.meaning}
+          </div>
+        )}
+      </div>
     </div>
   )
 };
