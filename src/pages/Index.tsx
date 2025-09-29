@@ -30,7 +30,7 @@ const Index = () => {
     >
       {/* Интерактивная область карты в руке */}
       <div 
-        className="absolute cursor-pointer bg-transparent hover:bg-yellow-400/30 transition-all duration-300 z-10 border-2 border-yellow-400/60 hover:border-yellow-400 rounded-lg shadow-lg hover:shadow-yellow-400/50" 
+        className="absolute cursor-pointer bg-transparent hover:bg-yellow-400/20 transition-colors duration-300 z-10" 
         style={{
           top: '25%',
           left: '15%',
