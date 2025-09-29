@@ -67,7 +67,7 @@ const Index = () => {
         backgroundRepeat: 'no-repeat'
       }}
     >
-      <div className="absolute top-8 right-8 flex flex-col gap-4 z-20">
+      <div className="absolute bottom-8 right-8 flex flex-col gap-4 z-20">
         <button
           onClick={() => setSelectedType('day')}
           className={`px-6 py-3 rounded-lg font-medium transition-all ${
