@@ -1,68 +1,90 @@
 import { useState } from 'react'
 
-const Index = () => {
-  const [currentReading, setCurrentReading] = useState<any>(null);
+interface Card {
+  name: string;
+  image: string;
+  meaning: string;
+}
 
-  const cards = [
-    { name: "Дурак", meaning: "Новые начинания", description: "Время для новых приключений и принятия смелых решений. Доверьтесь интуиции.", element: "Воздух" },
-    { name: "Маг", meaning: "Сила воли", description: "У вас есть все необходимые инструменты для достижения целей. Действуйте!", element: "Огонь" },
-    { name: "Верховная Жрица", meaning: "Интуиция", description: "Прислушайтесь к внутреннему голосу. Ответы приходят через медитацию.", element: "Вода" },
-    { name: "Императрица", meaning: "Плодородие", description: "Время творчества и изобилия. Ваши проекты принесут богатые плоды.", element: "Земля" },
-    { name: "Император", meaning: "Власть", description: "Возьмите контроль в свои руки. Лидерство и структура принесут успех.", element: "Огонь" },
-    { name: "Звезда", meaning: "Надежда", description: "После бури приходит покой. Ваши мечты осуществимы.", element: "Воздух" },
-    { name: "Солнце", meaning: "Радость", description: "Период счастья и успеха. Делитесь своим светом с окружающими.", element: "Огонь" },
-    { name: "Луна", meaning: "Иллюзии", description: "Не все является тем, чем кажется. Доверяйте интуиции больше глазам.", element: "Вода" },
-    { name: "Смерть", meaning: "Трансформация", description: "Конец одного этапа означает начало нового. Примите изменения.", element: "Вода" },
-    { name: "Мир", meaning: "Завершение", description: "Цикл завершен. Вы достигли гармонии и можете праздновать успех.", element: "Земля" }
+const Index = () => {
+  const [isFlipped, setIsFlipped] = useState(false);
+  const [selectedCard, setSelectedCard] = useState<Card | null>(null);
+
+  const cards: Card[] = [
+    {
+      name: "Туз Пик",
+      image: "/img/b34f6665-c1ce-431f-9873-1a600dd3a3b6.jpg",
+      meaning: "Туз Пик — перемены, неожиданные известия."
+    },
+    {
+      name: "Король Пик",
+      image: "/img/32d71413-9856-40e0-bf1b-73186a855ff2.jpg",
+      meaning: "Король Пик — могущественный человек, покровитель."
+    },
+    {
+      name: "Пиковая дама",
+      image: "/img/34dd9ab1-fc94-44dd-b9f6-6324370b7787.jpg",
+      meaning: "Пиковая дама — сильная женщина, загадка, испытание судьбы."
+    }
   ];
 
   const handleCardClick = () => {
+    if (isFlipped) {
+      setIsFlipped(false);
+      setSelectedCard(null);
+      return;
+    }
+    
     const randomCard = cards[Math.floor(Math.random() * cards.length)];
-    setCurrentReading(randomCard);
+    setSelectedCard(randomCard);
+    setIsFlipped(true);
+    
+    if ('speechSynthesis' in window) {
+      setTimeout(() => {
+        const utterance = new SpeechSynthesisUtterance(randomCard.meaning);
+        utterance.lang = 'ru-RU';
+        utterance.rate = 0.9;
+        utterance.pitch = 0.8;
+        window.speechSynthesis.speak(utterance);
+      }, 600);
+    }
   };
 
   return (
-    <div 
-      className="fixed inset-0 w-full h-full bg-black bg-contain bg-center bg-no-repeat"
+    <div className="fixed inset-0 w-full h-full bg-black flex items-center justify-center" 
       style={{
-        backgroundImage: 'url(https://cdn.poehali.dev/files/79fbba26-6e10-4fd4-9822-3de36103c929.png)'
+        backgroundImage: 'url(https://cdn.poehali.dev/files/79fbba26-6e10-4fd4-9822-3de36103c929.png)',
+        backgroundSize: 'contain',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
       }}
     >
-      {/* Интерактивная область карты в руке */}
-      <div 
-        className="absolute cursor-pointer bg-transparent hover:bg-yellow-400/20 transition-colors duration-300 z-10" 
-        style={{
-          top: '25%',
-          left: '15%',
-          width: '12%',
-          height: '18%'
-        }}
-        onClick={handleCardClick}
-        title="Нажмите на карту для гадания"
-      />
-
-      {/* Область предсказания */}
-      {currentReading && (
-        <div className="absolute bottom-4 left-4 right-4 bg-black/90 backdrop-blur-sm rounded-lg p-4 text-white animate-fade-in z-20">
-          <div className="text-center">
-            <h3 className="text-xl text-yellow-400 mb-2 font-bold">
-              {currentReading.name}
-            </h3>
-            <p className="text-yellow-300 font-medium mb-2">
-              {currentReading.meaning}
-            </p>
-            <p className="text-sm leading-relaxed mb-3">
-              {currentReading.description}
-            </p>
-            <button 
-              onClick={() => setCurrentReading(null)}
-              className="px-4 py-2 bg-yellow-600 text-black rounded hover:bg-yellow-500 transition-colors"
-            >
-              Закрыть
-            </button>
-          </div>
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-8 z-20">
+        <div
+          className="w-[120px] h-[180px] cursor-pointer transition-all duration-500 perspective-1000"
+          onClick={handleCardClick}
+          style={{
+            transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
+            transformStyle: 'preserve-3d'
+          }}
+        >
+          <img 
+            src={isFlipped && selectedCard ? selectedCard.image : '/img/59e66927-45a7-46c0-91f6-39f79c23015e.jpg'}
+            alt="Карта"
+            className="w-full h-full object-cover rounded-lg shadow-[0_4px_20px_rgba(255,215,0,0.4)] animate-pulse"
+            style={{
+              transform: isFlipped ? 'scaleX(-1)' : 'scaleX(1)',
+              backfaceVisibility: 'hidden'
+            }}
+          />
         </div>
-      )}
+
+        {isFlipped && selectedCard && (
+          <div className="max-w-md bg-[rgba(24,24,30,0.95)] px-6 py-5 rounded-xl text-white text-xl tracking-wide border-2 border-yellow-400/30 shadow-lg animate-fade-in">
+            {selectedCard.meaning}
+          </div>
+        )}
+      </div>
     </div>
   )
 };
