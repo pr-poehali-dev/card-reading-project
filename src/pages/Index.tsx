@@ -9,6 +9,7 @@ interface Card {
 const Index = () => {
   const [isFlipped, setIsFlipped] = useState(false);
   const [selectedCard, setSelectedCard] = useState<Card | null>(null);
+  const [selectedType, setSelectedType] = useState<string>('day');
 
   const cards: Card[] = [
     { name: "Туз Пик", image: "/img/b34f6665-c1ce-431f-9873-1a600dd3a3b6.jpg", meaning: "Туз Пик — перемены, неожиданные известия." },
@@ -66,6 +67,49 @@ const Index = () => {
         backgroundRepeat: 'no-repeat'
       }}
     >
+      <div className="absolute top-8 right-8 flex flex-col gap-4 z-20">
+        <button
+          onClick={() => setSelectedType('day')}
+          className={`px-6 py-3 rounded-lg font-medium transition-all ${
+            selectedType === 'day'
+              ? 'bg-yellow-400/90 text-black shadow-lg shadow-yellow-400/50'
+              : 'bg-[rgba(24,24,30,0.9)] text-yellow-400 border-2 border-yellow-400/30 hover:bg-yellow-400/20'
+          }`}
+        >
+          Карта дня
+        </button>
+        <button
+          onClick={() => setSelectedType('love')}
+          className={`px-6 py-3 rounded-lg font-medium transition-all ${
+            selectedType === 'love'
+              ? 'bg-yellow-400/90 text-black shadow-lg shadow-yellow-400/50'
+              : 'bg-[rgba(24,24,30,0.9)] text-yellow-400 border-2 border-yellow-400/30 hover:bg-yellow-400/20'
+          }`}
+        >
+          Карта любви
+        </button>
+        <button
+          onClick={() => setSelectedType('wish')}
+          className={`px-6 py-3 rounded-lg font-medium transition-all ${
+            selectedType === 'wish'
+              ? 'bg-yellow-400/90 text-black shadow-lg shadow-yellow-400/50'
+              : 'bg-[rgba(24,24,30,0.9)] text-yellow-400 border-2 border-yellow-400/30 hover:bg-yellow-400/20'
+          }`}
+        >
+          Карта желаний
+        </button>
+        <button
+          onClick={() => setSelectedType('week')}
+          className={`px-6 py-3 rounded-lg font-medium transition-all ${
+            selectedType === 'week'
+              ? 'bg-yellow-400/90 text-black shadow-lg shadow-yellow-400/50'
+              : 'bg-[rgba(24,24,30,0.9)] text-yellow-400 border-2 border-yellow-400/30 hover:bg-yellow-400/20'
+          }`}
+        >
+          Карта недели
+        </button>
+      </div>
+
       <div className="absolute bottom-8 left-8 flex items-center gap-8 z-20">
         <div
           className="w-[120px] h-[180px] cursor-pointer transition-all duration-500 perspective-1000 relative"
