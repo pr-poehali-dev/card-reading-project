@@ -23,7 +23,7 @@ const Index = () => {
 
   return (
     <div 
-      className="fixed inset-0 w-full h-full bg-contain bg-center bg-no-repeat"
+      className="fixed inset-0 w-full h-full bg-black bg-contain bg-center bg-no-repeat"
       style={{
         backgroundImage: 'url(https://cdn.poehali.dev/files/79fbba26-6e10-4fd4-9822-3de36103c929.png)'
       }}
