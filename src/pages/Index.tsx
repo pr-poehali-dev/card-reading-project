@@ -239,7 +239,7 @@ const Index = () => {
         backgroundRepeat: 'no-repeat'
       }}
     >
-      <div className="absolute bottom-8 right-8 flex flex-col gap-4 z-20">
+      <div className="absolute bottom-0 right-8 flex flex-col gap-0 z-20">
         <button
           onClick={() => {
             setSelectedType('day');
