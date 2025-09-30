@@ -337,7 +337,10 @@ const Index = () => {
       </div>
 
       <div className="absolute bottom-8 md:bottom-8 top-8 md:top-auto left-1/2 -translate-x-1/2 z-20">
-        <h1 className="text-[#C9A876] font-serif tracking-wider font-extrabold md:text-4xl text-xl">Гадание - Пиковая дама</h1>
+        <h1 className="text-[#C9A876] font-serif tracking-wider font-extrabold text-xl md:text-4xl text-center md:text-left">
+          <span className="md:hidden">Гадание<br/>Пиковая дама</span>
+          <span className="hidden md:inline">Гадание - Пиковая дама</span>
+        </h1>
       </div>
     </div>
   )
