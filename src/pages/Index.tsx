@@ -239,14 +239,7 @@ const Index = () => {
         backgroundRepeat: 'no-repeat'
       }}
     >
-      {/* Заголовок для мобильной версии */}
-      <div className="absolute top-8 left-1/2 -translate-x-1/2 md:hidden z-20">
-        <h1 className="text-2xl font-bold text-[#C9A876] text-center">
-          Гадание<br/>Пиковая Дама
-        </h1>
-      </div>
-
-      <div className="absolute bottom-8 md:bottom-8 md:right-8 right-4 left-4 md:left-auto flex flex-col gap-2 md:gap-4 z-20 max-w-md">
+      <div className="absolute bottom-8 right-8 flex flex-col gap-4 z-20 max-w-md">
         <button
           onClick={() => {
             setSelectedType('day');
@@ -255,14 +248,14 @@ const Index = () => {
               setSelectedCard(null);
             }
           }}
-          className={`px-4 md:px-6 py-2 md:py-3 rounded-lg font-medium transition-all text-left ${
+          className={`px-6 py-3 rounded-lg font-medium transition-all text-left ${
             selectedType === 'day'
               ? 'bg-[#C9A876] text-black shadow-lg shadow-[#C9A876]/50'
               : 'bg-[rgba(24,24,30,0.9)] text-[#C9A876] border-2 border-[#C9A876]/30 hover:bg-[#C9A876]/20'
           }`}
         >
-          <div className="font-bold text-sm md:text-base">Карта дня</div>
-          <div className="text-xs md:text-sm opacity-80 mt-0.5 md:mt-1">Узнайте, что принесёт вам сегодняшний день</div>
+          <div className="font-bold">Карта дня</div>
+          <div className="text-sm opacity-80 mt-1">Узнайте, что принесёт вам сегодняшний день</div>
         </button>
         <button
           onClick={() => {
@@ -272,14 +265,14 @@ const Index = () => {
               setSelectedCard(null);
             }
           }}
-          className={`px-4 md:px-6 py-2 md:py-3 rounded-lg font-medium transition-all text-left ${
+          className={`px-6 py-3 rounded-lg font-medium transition-all text-left ${
             selectedType === 'love'
               ? 'bg-[#C9A876] text-black shadow-lg shadow-[#C9A876]/50'
               : 'bg-[rgba(24,24,30,0.9)] text-[#C9A876] border-2 border-[#C9A876]/30 hover:bg-[#C9A876]/20'
           }`}
         >
-          <div className="font-bold text-sm md:text-base">Карта любви</div>
-          <div className="text-xs md:text-sm opacity-80 mt-0.5 md:mt-1">Что ждёт в отношениях и чувствах</div>
+          <div className="font-bold">Карта любви</div>
+          <div className="text-sm opacity-80 mt-1">Что ждёт в отношениях и чувствах</div>
         </button>
         <button
           onClick={() => {
@@ -289,14 +282,14 @@ const Index = () => {
               setSelectedCard(null);
             }
           }}
-          className={`px-4 md:px-6 py-2 md:py-3 rounded-lg font-medium transition-all text-left ${
+          className={`px-6 py-3 rounded-lg font-medium transition-all text-left ${
             selectedType === 'wish'
               ? 'bg-[#C9A876] text-black shadow-lg shadow-[#C9A876]/50'
               : 'bg-[rgba(24,24,30,0.9)] text-[#C9A876] border-2 border-[#C9A876]/30 hover:bg-[#C9A876]/20'
           }`}
         >
-          <div className="font-bold text-sm md:text-base">Карта желаний</div>
-          <div className="text-xs md:text-sm opacity-80 mt-0.5 md:mt-1">Исполнится ли задуманное</div>
+          <div className="font-bold">Карта желаний</div>
+          <div className="text-sm opacity-80 mt-1">Исполнится ли задуманное</div>
         </button>
         <button
           onClick={() => {
@@ -306,14 +299,14 @@ const Index = () => {
               setSelectedCard(null);
             }
           }}
-          className={`px-4 md:px-6 py-2 md:py-3 rounded-lg font-medium transition-all text-left ${
+          className={`px-6 py-3 rounded-lg font-medium transition-all text-left ${
             selectedType === 'week'
               ? 'bg-[#C9A876] text-black shadow-lg shadow-[#C9A876]/50'
               : 'bg-[rgba(24,24,30,0.9)] text-[#C9A876] border-2 border-[#C9A876]/30 hover:bg-[#C9A876]/20'
           }`}
         >
-          <div className="font-bold text-sm md:text-base">Карта недели</div>
-          <div className="text-xs md:text-sm opacity-80 mt-0.5 md:mt-1">Прогноз на ближайшую неделю</div>
+          <div className="font-bold">Карта недели</div>
+          <div className="text-sm opacity-80 mt-1">Прогноз на ближайшую неделю</div>
         </button>
       </div>
 
