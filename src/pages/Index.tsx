@@ -213,13 +213,15 @@ const Index = () => {
           className="w-full h-full object-contain"
           autoPlay
           muted
-          onEnded={() => setShowIntro(false)}
           playsInline
+          onEnded={() => setShowIntro(false)}
+          onError={(e) => {
+            console.error('Video error:', e);
+            setShowIntro(false);
+          }}
           poster="https://284baef4-3d14-4ca5-8247-4811f0d6b14b.selstorage.ru/cf46f75d-6cb1-47a9-8a05-c3647c046ae4_ec9c6fcf-7d13-48a1-9b8d-22d447ed67c7.png"
-        >
-          <source src="https://284baef4-3d14-4ca5-8247-4811f0d6b14b.selstorage.ru/24611ee1-5089-44cd-b1d9-ea50e7618a2a_01999649-3958-75b6-83b2-8991c0b10513.mp4" type="video/mp4" />
-          Ваш браузер не поддерживает элемент video.
-        </video>
+          src="https://284baef4-3d14-4ca5-8247-4811f0d6b14b.selstorage.ru/24611ee1-5089-44cd-b1d9-ea50e7618a2a_01999649-3958-75b6-83b2-8991c0b10513.mp4"
+        />
         <button
           onClick={() => setShowIntro(false)}
           className="absolute bottom-8 right-8 px-6 py-3 bg-[#C9A876] text-black rounded-lg font-medium hover:bg-[#B89866] transition-colors z-50"
