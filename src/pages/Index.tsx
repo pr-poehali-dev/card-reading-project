@@ -171,7 +171,7 @@ const Index = () => {
         )}
       </div>
 
-      <div className="absolute top-4 md:bottom-8 md:top-auto left-1/2 -translate-x-1/2 z-20">
+      <div className="absolute top-0 md:bottom-8 md:top-auto left-1/2 -translate-x-1/2 z-20">
         <h1 className="text-[#C9A876] font-serif tracking-wider font-extrabold text-xl md:text-4xl text-center md:text-left">
           <span className="md:hidden">Гадание<br/>Пиковая дама</span>
           <span className="hidden md:inline">Гадание - Пиковая дама</span>
